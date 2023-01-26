@@ -11,13 +11,16 @@
   
 .modal {
     text-align: center;
-    background-color: white;
+    background-color: #d9d9d9;
     position: fixed;
-    height: 500px;
-    width: 500px;
+    height: 550px;
+    width: 550px;
     margin-top: 10%;
     padding: 60px 0;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
   
 h6 {
@@ -36,4 +39,50 @@ h6 {
     border-radius: 8px;
     top: 10px;
     right: 10px;
+}
+.container_modal {
+    width: 100%;
+    height: auto;
+    display: flex;
+
+}
+.image_modal {
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgb(121, 121, 121);
+}
+.info_modal {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.overview_modal {
+    font-size: 14px;
+    text-align: start;
+    margin: 10px;
+}
+.title_modal {
+    font-size: 18px;
+    margin: 10px;
+}
+.release_date_modal {
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+.container_modal {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+.vote_average {
+    width: 100px;
+    height: 18px;
+    background-color: #3A3E4A;
+    border-radius: 10px;
+    color: #d9d9d9;
+    font-size: 15px;
+    margin: 10px;
 }

@@ -15,20 +15,32 @@ import Modal from './components/Modal.vue'
     data(){
       return{
         films: null,
-        revele: false
+        data: null,
+        revele: false,
+        clicked: null,
+        tmp: null
       }
     },
     methods: {
-      toggleModal: function(){
+      toggleModal: function(e){
         this.revele = !this.revele
-      }
-    },
+        this.clicked = e
+      },
+        filter: function(){
+          let tmp;
+          tmp = this.films.filter((e) => e.vote_average > 7)
+          this.films = tmp;
+        },
+        all: function(){
+          this.films = this.data;
+        }
+      },
     mounted(){
       axios
       .get('https://api.themoviedb.org/3/movie/now_playing?api_key=7a4c83706af8cbec688d9366d2f9ecd2&language=fr')
       .then((reponse) => {
         this.films = reponse.data.results;
-        console.log(this.films)
+        this.data = reponse.data.results;
       });
     },
   }
@@ -50,22 +62,25 @@ import Modal from './components/Modal.vue'
 </header>
 <main>
   <section class="Filter">
-    <h1 class="title_filter">filtres</h1>
+    <h1 class="title_filter">filtres :</h1>
       <div class="filtered_buttons">
-        <button class="top_rated" v-on:click="Les-mieux-notés">Les mieux notés</button>
+        <button class="top_rated" v-on:click="filter">Les mieux notés</button>
+        <button class="all_movies" v-on:click="all">Tous les films</button>
       </div>
   </section>
   <section class="container_Movies">
     <div class="grid_movies">
         <div :key="index" v-for="(film, index) in films">
           <div class="grid_container"  @click="showModal = true">
-            <img v-on:click="toggleModal" class="movies_images" :src="'https://image.tmdb.org/t/p/w500' + film.poster_path">
-            <h1>{{ film.title }}</h1>
+            <img v-on:click="toggleModal(film)" class="movies_images" :src="'https://image.tmdb.org/t/p/w500' + film.poster_path">
+            <div class="movie_info">
+              <h1 class="titles">{{ film.title }}</h1>
+            </div>
           </div>
         </div>
     </div>
   </section>
-  <Modal v-bind:revele="revele" v-bind:toggleModale="toggleModal"/>
+  <Modal v-bind:revele="revele" v-bind:clicked="clicked" v-bind:toggleModale="toggleModal"/>
   
 </main>
 <footer>

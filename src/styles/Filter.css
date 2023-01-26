@@ -10,16 +10,29 @@
     text-transform: capitalize;
 }
 .filtered_buttons{
-    width: 100%;
+    width: 205px;
     height: auto;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 .top_rated {
     background-color: #3A3E4A;
     border: none;
     border-radius: 50px;
-    color: white;
+    color: #d9d9d9;
+    padding: 10px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.all_movies{
+    background-color: #3A3E4A;
+    border: none;
+    border-radius: 50px;
+    color: #d9d9d9;
     padding: 10px 28px;
     text-align: center;
     text-decoration: none;
